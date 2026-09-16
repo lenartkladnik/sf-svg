@@ -15,12 +15,12 @@ namespace nsvg {
 	Image::Image()
 	{ }
 
-	Image::Image(const Image& image) {
-		image;
+	Image::Image(const Image&) {
+		// image;
 	}
 
-	Image& Image::operator =(const Image& image) {
-		image;
+	Image& Image::operator =(const Image&) {
+		// image;
 		return *this;
 	}
 

@@ -60,7 +60,7 @@ namespace sfc {
 	public sf::Shape {
 	protected:
 		//! \brief Vertices used to draw curve
-		VertexVector<sf::LinesStrip> m_vertices;
+		VertexVector<sf::PrimitiveType::LineStrip> m_vertices;
 
 		//! \brief Stores points count
 		std::size_t m_pointCount;

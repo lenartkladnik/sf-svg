@@ -19,7 +19,7 @@ namespace sfc {
 			return;
 
 		if(this->m_mode == DrawMode::DEBUG)
-			target.draw(this->m_debugLines, 4, sf::LinesStrip);
+			target.draw(this->m_debugLines, 4, sf::PrimitiveType::LineStrip);
 
 		target.draw(this->m_vertices, states);
 	}

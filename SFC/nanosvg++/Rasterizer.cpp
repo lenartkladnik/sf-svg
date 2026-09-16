@@ -16,17 +16,17 @@ namespace nsvg {
 		: internal { cstyle::createRasterizer() }
 	{ }
 
-	Rasterizer::Rasterizer (const Rasterizer& rasterizer)
+	Rasterizer::Rasterizer (const Rasterizer&)
 		: internal { cstyle::createRasterizer() } {
-		rasterizer;
+		// rasterizer;
 	}
 
 	Rasterizer::~Rasterizer() {
 		cstyle::deleteRasterizer(this->internal);
 	}
 
-	Rasterizer& Rasterizer::operator= (const Rasterizer& rasterizer) {
-		rasterizer;
+	Rasterizer& Rasterizer::operator= (const Rasterizer&) {
+		// rasterizer;
 		return *this;
 	}
 
@@ -34,7 +34,7 @@ namespace nsvg {
 		sf::Vector2f size_f{image.getSize().x * scale, image.getSize().y * scale};
 		sf::Vector2i size = static_cast<sf::Vector2i>(size_f);
 
-		std::vector<sf::Uint8> pixels(static_cast<size_t>(size.x * size.y) * 4ul);
+		std::vector<std::uint8_t> pixels(static_cast<size_t>(size.x * size.y) * 4ul);
 		sf::Image img;
 
 		nsvg::cstyle::rasterize(
@@ -49,7 +49,7 @@ namespace nsvg {
 			size.x * 4
 		);
 
-		img.create(static_cast<unsigned>(size.x), static_cast<unsigned>(size.y), &pixels[0]);
+		img.resize({static_cast<unsigned>(size.x), static_cast<unsigned>(size.y)}, &pixels[0]);
 
 		return img;
 	}

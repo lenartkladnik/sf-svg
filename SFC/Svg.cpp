@@ -71,7 +71,7 @@ namespace sfc {
 	}
 
 	bool SVGImage::loadFromMemory(const void *data, size_t size, const float dpi) {
-		if(static_cast<const sf::Uint8*>(data)[size - 1] != '\0') {
+		if(static_cast<const std::uint8_t*>(data)[size - 1] != '\0') {
 			std::cout << "SVG file in memory has to be null-terminated!" << std::endl;
 			return false;
 		}
@@ -85,11 +85,11 @@ namespace sfc {
 	}
 
 	bool SVGImage::loadFromStream(sf::InputStream& stream, const float dpi) {
-		std::vector<char> copy(stream.getSize() + 1);
-		stream.read(copy.data(), stream.getSize());
+		std::vector<char> copy(*stream.getSize() + 1);
+		stream.read(copy.data(), *stream.getSize());
 
-		if(copy[stream.getSize() - 1] != '\0') {
-			copy[stream.getSize()] = '\0';
+		if(copy[*stream.getSize() - 1] != '\0') {
+			copy[*stream.getSize()] = '\0';
 		}
 
 		bool ok = this->m_image.loadFromMemory(copy.data(), "px", dpi);

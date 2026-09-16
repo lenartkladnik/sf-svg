@@ -95,7 +95,7 @@ namespace sfc {
 			{{point, this->color},
 			{point + vector, this->color}};
 
-			target.draw(tab, 2, sf::Lines, states);
+			target.draw(tab, 2, sf::PrimitiveType::Lines, states);
 		}
 	};
 }
